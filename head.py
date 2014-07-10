@@ -1,8 +1,16 @@
 __author__ = 'aliunsal'
-from sys import argv
-script, read_type, line_number, file_name = argv
-file = open(file_name, 'r')
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("file_name", nargs="?")
+parser.add_argument("-n", nargs="?", default="10")
+
+args = parser.parse_args()
+print parser.parse_args()
+
+file = open(args.file_name, "r")
 lines = file.readlines()
-file.close()
-for i in range(0, int(line_number)):
+for i in range(0, int(args.n)):
     print lines[i]
+file.close()
